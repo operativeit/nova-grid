@@ -8,7 +8,7 @@
           :class="{ 'mb-2': shouldShowHelpText, flex: true }"
         >
           <span>
-            {{ fieldLabel }}
+            {{ fieldLabel }} 
           </span>
           <span v-if="field.required" class="text-red-500 text-sm">
             {{ __('*') }}
@@ -19,7 +19,6 @@
 
     <div :class="controlWrapperClasses">
       <slot name="field" />
-
       <HelpText class="help-text-error" v-if="showErrors && hasError">
         {{ firstError }}
       </HelpText>
@@ -59,7 +58,6 @@ export default {
   methods: {
     applyParentElClasses() {
       const parentElement = this.getParentElement(this);
-
       if (parentElement && parentElement.classList) {
         parentElement.classList.add(...this.fieldSizeClasses);
       }
@@ -145,7 +143,7 @@ export default {
 
     fieldSizeClasses() {
       if (!this.field.size) return ['w-full'];
-      return [this.field.size, 'border-r', 'border-gray-100', 'dark:border-gray-700', 'self-end'];
+      return [...this.field.size.split(' '), 'border-r', 'border-gray-100', 'dark:border-gray-700', 'self-end'];
     },
   },
 };
