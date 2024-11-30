@@ -1,5 +1,5 @@
 <template>
-  <div v-if="field.visible" :class="fieldWrapperClasses">
+  <div v-if="field.visible" :class="fieldWrapperClasses" class="abc">
     <div v-if="field.withLabel" :class="labelClasses">
       <slot>
         <FormLabel
@@ -44,7 +44,9 @@ export default {
   },
 
   mounted() {
-    this.applyParentElClasses();
+    this.$nextTick(() => {
+      this.applyParentElClasses();
+    });
   },
 
   watch: {
@@ -65,13 +67,20 @@ export default {
 
     getParentElement: function (el) {
       let currentEl = el.$el;
+
       while (currentEl) {
         const parentNode = currentEl.parentNode;
 
         // Reached end of document
         if (!parentNode) return null;
 
-        if (currentEl.parentNode.classList && currentEl.parentNode.classList.contains('nova-grid--card')) {
+        if (parentNode?.parentNode?.classList?.contains('tab')) {
+          parentNode.classList.add('flex','flex-wrap');
+          return currentEl;
+        }
+
+        if (parentNode?.classList?.contains('nova-grid--card')) {
+          parentNode.classList.add('flex','flex-wrap');
           return currentEl;
         }
 
@@ -89,7 +98,7 @@ export default {
         this.field.withLabel && !this.field.inline && this.field.compact && 'py-4',
         this.field.stacked && 'md:flex-col md:space-y-2',
         this.hasSize && 'nova-grid--field-wrapper',
-        'flex w-full',
+        'w-full',
       ]
     },
 

@@ -5,7 +5,8 @@
     "watch": "mix watch",
     "hot": "mix watch --hot",
     "prod": "mix --production",
-    "format": "prettier --write 'resources/**/*.{css,scss,js,vue}'"
+    "format": "prettier --write 'resources/**/*.{css,scss,js,vue}'",
+    "nova:install": "npm --prefix='../../vendor/laravel/nova' ci"
   },
   "devDependencies": {
     "@inertiajs/inertia": "^0.11.0",
@@ -15,7 +16,7 @@
     "form-backend-validation": "^2.4.0",
     "inflector-js": "^1.0.1",
     "laravel-mix": "^6.0.49",
-    "postcss": "^8.4.16",
+    "postcss": "^8.4",
     "postcss-import": "^14.1.0",
     "prettier": "^2.7.1",
     "resolve-url-loader": "^5.0.0",
