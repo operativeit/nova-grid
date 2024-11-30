@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Card from 'nova/components/Card';
+import Card from '@/components/Card';
 
 export default {
   components: { Card },
